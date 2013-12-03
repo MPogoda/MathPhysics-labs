@@ -1,5 +1,5 @@
 % -*- texinfo -*-
-% @deftypefn {Function File} {@var{y} = } task2 (@var{k_x}, @var{v_x}, @var{q_x}, @var{f_x}, @var{mu_0}, @var{mu_1}, @var{xs} )
+% @deftypefn {Function File} {@var{y} = } task2a (@var{k_x}, @var{v_x}, @var{q_x}, @var{f_x}, @var{mu_0}, @var{mu_1}, @var{xs} )
 % Find solution for problem:
 %  $ (k(x) * u_x)_x + v(x) * u_x - q(x) * u = -f(x) $
 %  $ k(x) >= c_1 > 0 $
@@ -26,7 +26,7 @@
 % Vector of y coordinates.
 %
 % @end table
-function [y] = task2(k_x, v_x, q_x, f_x, mu_0, mu_1, xs)
+function [y] = task2a(k_x, v_x, q_x, f_x, mu_0, mu_1, xs)
     h = max( diff( xs ) );
 
     sub_x = xs(2:end-1); % x without edges
