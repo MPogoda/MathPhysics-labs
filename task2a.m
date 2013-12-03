@@ -42,13 +42,16 @@ function [y] = task2a(k_x, v_x, q_x, f_x, mu_0, mu_1, xs)
     k_minus_s = k_x( sub_x .- (h / 2) );
     k_plus_s = k_x( sub_x .+ (h / 2) );
 
-    As = (vs ./ (2 * h)) + (k_plus_s ./ (h^2));
+    % near y_{i+1}
+    As = -((vs ./ (2 * h)) + (k_plus_s ./ (h^2)));
+    % near y_i
     Cs = qs .+ ((k_minus_s + k_plus_s) ./ (h^2));
-    Bs = (-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2));
+    % near y_{i-1}
+    Bs = -((-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2)));
 
-    As = -[0, As, 0];
+    As = [0, As, 0];
     Cs = [1, Cs, 1];
-    Bs = -[0, Bs, 0];
+    Bs = [0, Bs, 0];
 
     Fs = [ mu_0, fs, mu_1 ];
 
