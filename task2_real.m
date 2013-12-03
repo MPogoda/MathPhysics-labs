@@ -1,6 +1,5 @@
 % -*- texinfo -*-
-% @deftypefn {Function File} {} task2_real(@var{k}, @var{v}, @var{q}, @var{mu_0}, @var{mu_1}, @var{l}, @var{N} = 100)
-% @deftypefnx {Function File} {[@var{x}, @var{y}] = } task2_real (@dots{})
+% @deftypefn {Function File} {[@var{y}] = } task2_real(@var{k}, @var{v}, @var{q}, @var{mu_0}, @var{mu_1}, @var{xs} )
 % Find solution for problem:
 %  $ k * u_xx + v * u_x - q * u = 0 $
 %  $ k > 0 $
@@ -16,11 +15,8 @@
 % @item @var{k, v, q, mu_0, mu_1}
 % corresponding constants from problem statement.
 %
-% @item @var{l}
-% Right edge of interval
-%
-% @item @var{N}
-% Number of sub-intervals.
+% @item @var{xs}
+% All x in w_h.
 %
 % @end table
 %
@@ -33,22 +29,17 @@
 % Vector of y coordinates.
 %
 % @end table
-function [x, y] = task2_real(k, v, q, mu_0, mu_1, l, n = 100)
-    h = l/n;
-    x = 0:h:l;
-
+function [y] = task2_real(k, v, q, mu_0, mu_1, xs)
     b = v/(2*k);
     a = sqrt( b^2 + (q/k));
 
-    left_e = e .^ ( (-b + a) .* x);
-    right_e = e .^ ( (-b - a) .* x);
+    left_e = e .^ ( (-b + a) .* xs);
+    right_e = e .^ ( (-b - a) .* xs);
 
     % c_1 + c_2 = mu_0
     % c_1 * left_e( end ) + c_2 * right_e( end ) = mu_1
-
     A = [ 1, 1; left_e( end ), right_e( end ) ];
     mu_s = [mu_0; mu_1];
-
     c = pinv(A) * mu_s;
 
     y = c(1) .* left_e .+ c(2) .* right_e;
