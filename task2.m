@@ -50,9 +50,9 @@ function [x, y] = task2(k_x, v_x, q_x, f_x, mu_0, mu_1, l, n = 100)
     k_minus_s = k_x( sub_x .- (h / 2) );
     k_plus_s = k_x( sub_x .+ (h / 2) );
 
-    As = (-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2));
+    Bs = (-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2));
     Cs = qs .+ ((k_minus_s + k_plus_s) ./ (h^2));
-    Bs = (vs ./ (2 * h)) + (k_plus_s ./ (h^2));
+    As = (vs ./ (2 * h)) + (k_plus_s ./ (h^2));
 
     As = -[0, As, 0];
     Cs = [1, Cs, 1];
