@@ -43,4 +43,4 @@ function [x, y] = task1_1( FCN, l, N = 1500 )
     y = [0, Cs * Mu_xs, 0 ];
 
     plot( x, y );
-end
+endfunction
