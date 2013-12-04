@@ -1,5 +1,7 @@
 % -*- texinfo -*-
 % @deftypefn {Function File} {@var{y} = } task2a (@var{k_x}, @var{v_x}, @var{q_x}, @var{f_x}, @var{mu_0}, @var{mu_1}, @var{xs} )
+% @end deftypefn
+%
 % Find solution for problem:
 %  $ (k(x) * u_x)_x + v(x) * u_x - q(x) * u = -f(x) $
 %  $ k(x) >= c_1 > 0 $
@@ -43,11 +45,14 @@ function [y] = task2a(k_x, v_x, q_x, f_x, mu_0, mu_1, xs)
     k_plus_s = k_x( sub_x .+ (h / 2) );
 
     % near y_{i+1}
-    As = -((vs ./ (2 * h)) + (k_plus_s ./ (h^2)));
+    As = (vs ./ (2 * h)) .+ (k_plus_s ./ (h^2));
+    As = -As;
     % near y_i
-    Cs = qs .+ ((k_minus_s + k_plus_s) ./ (h^2));
+    Cs = -qs .- ((k_minus_s + k_plus_s) ./ (h^2));
+    Cs = -Cs;
     % near y_{i-1}
-    Bs = -((-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2)));
+    Bs = (-vs ./ (2 * h)) .+ (k_minus_s ./ (h^2));
+    Bs = -Bs;
 
     As = [0, As, 0];
     Cs = [1, Cs, 1];

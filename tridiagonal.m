@@ -1,5 +1,7 @@
 % -*- texinfo -*-
 % @deftypefn {Function File} {@var{y} = } tridiagonal( @var{As}, @var{Bs}, @var{Ys}, @var{Fs} )
+% @end deftypefn
+%
 % Solve linear system that has tridiagonal form.
 %
 % Arguements:

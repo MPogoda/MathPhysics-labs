@@ -1,5 +1,7 @@
 % -*- texinfo -*-
 % @deftypefn {Function File} {[@var{y}] = } task2_real(@var{k}, @var{v}, @var{q}, @var{mu_0}, @var{mu_1}, @var{xs} )
+% @end deftypefn
+%
 % Find solution for problem:
 %  $ k * u_xx + v * u_x - q * u = 0 $
 %  $ k > 0 $

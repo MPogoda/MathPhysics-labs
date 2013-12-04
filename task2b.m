@@ -1,5 +1,7 @@
 % -*- texinfo -*-
 % @deftypefn {Function File} {@var{y} = } task2b (@var{k_x}, @var{v_x}, @var{q_x}, @var{f_x}, @var{mu_0}, @var{mu_1}, @var{xs} )
+% @end deftypefn
+%
 % Find solution for problem:
 %  $ (k(x) * u_x)_x + v(x) * u_x - q(x) * u = -f(x) $
 %  $ k(x) >= c_1 > 0 $
