@@ -42,7 +42,7 @@ function [y] = task2_real(k, v, q, mu_0, mu_1, xs)
     % c_1 * left_e( end ) + c_2 * right_e( end ) = mu_1
     A = [ 1, 1; left_e( end ), right_e( end ) ];
     mu_s = [mu_0; mu_1];
-    c = pinv(A) * mu_s;
+    c = inv(A) * mu_s;
 
     y = c(1) .* left_e .+ c(2) .* right_e;
 endfunction;

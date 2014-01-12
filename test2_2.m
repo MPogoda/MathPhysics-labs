@@ -32,10 +32,10 @@ function test2_2()
     ya = task2a( k_x, v_x, q_x, f_x, mu_0, mu_1, xa );
 
     xb = 0:0.1:l;
-    yb = task2a( k_x, v_x, q_x, f_x, mu_0, mu_1, xb );
+    yb = task2b( k_x, v_x, q_x, f_x, mu_0, mu_1, xb );
 
     xc = 0:0.1:l;
-    yc = task2a( k_x, v_x, q_x, f_x, mu_0, mu_1, xc );
+    yc = task2c( k_x, v_x, q_x, f_x, mu_0, mu_1, xc );
 
     x0 = 0:0.1:l;
     y0 = task2_real( k, v, q, mu_0, mu_1, x0 );
