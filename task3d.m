@@ -33,7 +33,5 @@ function [y] = task3d(a, g, mu, xs, ts )
         Fs = [y( j + 1, 1 ), Fs, y(j, N) ];
 
         y( j + 1, 1:end ) =  tridiagonal( As, Bs, Cs, Fs );
-
-        #y( j + 1, N ) = ( k_h * y( j + 1, N - 1 ) + y(j, N ) ) / (1 + k_h );
     endfor
 endfunction
