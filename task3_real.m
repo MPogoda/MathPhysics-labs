@@ -3,9 +3,17 @@
 % @end deftypefn
 %
 % @end table
+% ts should be vertical
 function [y] = task3_real( a, g, mu, xs, ts )
-    gs = g( xs .- a .* ts );
-    mus = mu( t .- ( x ./ a ) );
+    N = length( xs );
+    M = length( ts );
+    xs .*= ones( M, N );
+    ts .*= ones( M, N );
 
-    y = (xs >= (a .* ts)) * gs   +   ( xs < (a .* ts)) * mus;
+    gs = g( xs .- a .* ts );
+    mus = mu( ts .- ( xs ./ a ) );
+
+    mask = (xs >= (a .* ts ))
+
+    y = mask .* gs .+ (1 .- mask ) .* mus;
 endfunction;
