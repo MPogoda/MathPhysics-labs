@@ -3,7 +3,9 @@
 % @end deftypefn
 %
 % @end table
-% TODO: add Fs
+% (21) Неявный левый угол
+% при k_h < 0 --- абсолютно стойкая
+% при K_h > 1 --- условно-стойкая
 function [y] = task3b(a, g, mu, xs, ts )
     h = xs(2) - xs(1);
     tau = ts(2) - ts(1);

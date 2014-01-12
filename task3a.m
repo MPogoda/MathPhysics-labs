@@ -3,7 +3,8 @@
 % @end deftypefn
 %
 % @end table
-% TODO: add Fs
+% (6) --- Явный правый угол
+% Стойкая при k_h \in [0; 1]
 function [y] = task3a(a, g, mu, xs, ts )
     h = xs(2) - xs(1);
     tau = ts(2) - ts(1);
