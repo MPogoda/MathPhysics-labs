@@ -7,8 +7,7 @@
 function [y] = task3_real( a, g, mu, xs, ts )
     N = length( xs );
     M = length( ts );
-    xs = ones(M, 1) * xs;
-    ts = ts * ones(1, N );
+    [xs,ts] = meshgrid(xs, ts);
 
     gs = g( xs .- a .* ts );
     mus = mu( ts .- ( xs ./ a ) );
