@@ -17,7 +17,7 @@ function test4b2()
     figure(1)
     [zs] = task4b( v, mu, k, u0, g0, g1, xs, ts );
     mesh( xs, ts, zs );
-    figure(2)
+pause;
 
     [xs,ts] = meshgrid( xs, ts);
     zs1 = u(xs, ts);

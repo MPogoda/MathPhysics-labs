@@ -11,7 +11,7 @@ function test4a1()
 
     [zs] = task4a( v, mu, a, xs, ts);
     mesh( xs, ts, zs );
-    figure(2)
+    pause;
     [zs2] = task4_real_a( v, mu, a, xs, ts);
     mesh( xs, ts, zs2 );
     max(max(zs-zs2))
