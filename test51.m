@@ -1,12 +1,8 @@
 function test51()
-    mu = @(x, y, t) ones( length(x), length(y), length(t));
+    mu = 1;
 
     function [z] = gf( x, y, t )
-        [xs_, ys_, ts_ ] = meshgrid( x, y, t);
-        #printf("TUT");
-        #size(ts_)
-        #size(xs_)
-        #size(ys_)
+        [ys_, xs_, ts_ ] = meshgrid( y, x, t);
         z = e .^ ( xs_ .^ 2 .+ ys_ .^ 2 .+ ts_ .^ 2);
     endfunction;
 
@@ -23,27 +19,40 @@ function test51()
     g = @(x, y, t) gf( x, y,t );
 
     h1 = 0.1;
-    h2 = 0.1;
+    h2 = 0.2;
     tau = 0.0025;
     xs = 0:h1:L1;
     ys = 0:h2:L2;
     ts = 0:tau:T;
+    zs = gf( xs, ys, ts );
 
-    [zs] = task5( mu, u0, gx0, gx1, g0y, g1y, xs, ys, ts);
+    [zs1] = task5a( mu, u0, gx0, gx1, g0y, g1y, xs, ys, ts);
+    [zs2] = task5b( mu, u0, gx0, gx1, g0y, g1y, xs, ys, ts);
 
-    zs1 = gf( xs, ys, ts );
+    zs(:,:,2)
+    zs2(:,:,2)
+    pause
 
-size(xs)
-size(ys)
-size(ts)
-    size(zs)
-    size(zs1)
 
-size( zs( :, :, 1 ) )
-zs( :, :, 30 ) - zs1( :, :, 30 )
-#    mesh( xs, ts, zs );
-#    figure(2)
-#    [zs2] = task4_real_a( v, mu, a, xs, ts);
-#    mesh( xs, ts, zs2 );
-#    max(max(zs-zs2))
+    j = 100;
+
+    [ys,xs ] =meshgrid( ys,xs);
+    printf("real:")
+    figure(1)
+    mesh( xs, ys, zs( :, :, j ) );
+    pause
+    printf("(1):")
+    figure(2);
+    mesh( xs, ys, zs1( :, :, j ) )
+    pause
+    printf("(2):")
+    figure(3);
+    mesh( xs, ys, zs2( :, :, j ) )
+
+
+    printf("|zs1-zs|= ")
+    max(max(max(abs(zs1-zs))))
+    printf("|zs2-zs|= ")
+    max(max(max(abs(zs2-zs))))
+
 endfunction
