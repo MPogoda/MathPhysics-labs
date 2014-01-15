@@ -37,11 +37,9 @@ function test51()
     mesh( xs, ys, zs( :, :, j ) );
     pause
     printf("(1):")
-    figure(2);
     mesh( xs, ys, zs1( :, :, j ) )
     pause
     printf("(2):")
-    figure(3);
     mesh( xs, ys, zs2( :, :, j ) )
 
 
