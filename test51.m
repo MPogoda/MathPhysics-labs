@@ -3,7 +3,7 @@ function test51()
 
     function [z] = gf( x, y, t )
         [ys_, xs_, ts_ ] = meshgrid( y, x, t);
-        z = e .^ ( xs_ .^ 2 .+ ys_ .^ 2 .+ ts_ .^ 2);
+        z = e .^ ( xs_  .+ ys_ .+ ts_ );
     endfunction;
 
     L1 = 1;
