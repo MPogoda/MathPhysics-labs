@@ -1,9 +1,9 @@
-function test51()
+function test53()
     mu = 1;
 
     function [z] = gf( x, y, t )
         [ys_, xs_, ts_ ] = meshgrid( y, x, t);
-        z = e .^ ( xs_ .^ 2 .+ ys_ .^ 2 .+ ts_ .^ 2);
+        z = cos( xs_ .+ 1 ) .* cos( ys_ .+ 1) .* e .^(-ts_);
     endfunction;
 
     L1 = 1;
@@ -19,8 +19,8 @@ function test51()
     g = @(x, y, t) gf( x, y,t );
 
     h1 = 0.1;
-    h2 = 0.2;
-    tau = 0.0025;
+    h2 = 0.1;
+    tau = 0.1;
     xs = 0:h1:L1;
     ys = 0:h2:L2;
     ts = 0:tau:T;
@@ -29,7 +29,7 @@ function test51()
     [zs1] = task5a( mu, u0, gx0, gx1, g0y, g1y, xs, ys, ts);
     [zs2] = task5b( mu, u0, gx0, gx1, g0y, g1y, xs, ys, ts);
 
-    j = 100;
+    j = 6;
 
     [ys,xs ] =meshgrid( ys,xs);
     printf("real:")

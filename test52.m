@@ -1,9 +1,9 @@
-function test51()
+function test52()
     mu = 1;
 
     function [z] = gf( x, y, t )
         [ys_, xs_, ts_ ] = meshgrid( y, x, t);
-        z = e .^ ( xs_ .^ 2 .+ ys_ .^ 2 .+ ts_ .^ 2);
+        z = cos( xs_ .+ 1 ) .* cos( ys_ .+ 1) .* e .^(-ts_);
     endfunction;
 
     L1 = 1;
